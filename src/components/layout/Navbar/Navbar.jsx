@@ -1,31 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
-import { 
-  Search, 
-  User, 
-  ShoppingBag, 
-  Menu, 
-  X, 
-  TrendingUp, 
-  Clock, 
-  Sparkles, 
-  ChevronRight, 
-  ChevronDown, 
-  Globe, 
-  LogIn 
-} from 'lucide-react';
+import { MaterialIcon } from '../../common/MaterialIcon';
+import logo from "../../../assets/images/logohome.png";
+
 import { 
   XIAOMI_CATEGORIES,
   TRENDING_SEARCHES, 
   RECENT_SEARCHES, 
   POPULAR_PRODUCTS, 
   ALL_PRODUCTS 
-} from '../../data/xiaomiProducts';
+} from '../../../data/xiaomiProducts';
 
-// ==========================================
 // 1. LOGO COMPONENT
-// ==========================================
+
 export const Logo = ({ onClick }) => {
   return (
     <Link to="/" onClick={onClick} className="flex items-center shrink-0 focus:outline-none rounded-[10px]">
@@ -33,50 +21,23 @@ export const Logo = ({ onClick }) => {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.98 }}
         transition={{ type: "spring", stiffness: 400, damping: 25 }}
-        className="w-[32px] h-[32px] bg-[#FF6900] rounded-[10px] flex items-center justify-center text-white shadow-2xs overflow-hidden select-none cursor-pointer"
-        aria-label="Xiaomi Official Home"
+        className="w-[32px] h-[32px]  rounded-[10px] flex items-center justify-center  overflow-hidden select-none cursor-pointer"
+        aria-label="Nova home"
       >
-        <svg
-          viewBox="0 0 40 40"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+        <img
+          src={logo}
+          alt=""
           className="w-[22px] h-[22px]"
-        >
-          <path
-            d="M9 29V14C9 12.3431 10.3431 11 12 11H17C18.6569 11 20 12.3431 20 14V29"
-            stroke="currentColor"
-            strokeWidth="3.2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M14.5 29V11"
-            stroke="currentColor"
-            strokeWidth="3.2"
-            strokeLinecap="round"
-          />
-          <path
-            d="M25 29V14C25 12.3431 26.3431 11 28 11H31"
-            stroke="currentColor"
-            strokeWidth="3.2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M31 29V21.5"
-            stroke="currentColor"
-            strokeWidth="3.2"
-            strokeLinecap="round"
-          />
-        </svg>
+          draggable={false}
+        />
       </motion.div>
     </Link>
   );
 };
 
-// ==========================================
+
 // 2. NAV ITEM COMPONENT
-// ==========================================
+
 export const NavItem = ({
   label,
   href,
@@ -89,21 +50,20 @@ export const NavItem = ({
         to={href}
         onClick={onClick}
         aria-current={isActive ? 'page' : undefined}
-        className={`text-[14px] font-normal transition-colors duration-200 py-2 px-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6900] rounded-md ${
+        className={`text-[14px] font-medium transition-colors duration-200 py-2 px-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6900] rounded-md flex items-center ${
           isActive
             ? 'text-[#FF6900]'
             : 'text-[#191919] group-hover:text-[#FF6900]'
         }`}
       >
-        {label}
+        <span>{label}</span>
       </Link>
     </div>
   );
 };
 
-// ==========================================
 // 3. ICON BUTTONS
-// ==========================================
+
 export const IconButton = ({
   onClick,
   ariaLabel,
@@ -137,7 +97,7 @@ export const SearchIcon = ({ onClick }) => (
   <IconButton
     onClick={onClick}
     ariaLabel="Open Search"
-    icon={<Search size={22} strokeWidth={1.5} />}
+    icon={<MaterialIcon name="search" size={22} />}
   />
 );
 
@@ -145,7 +105,7 @@ export const AccountIcon = ({ onClick, isActive }) => (
   <IconButton
     onClick={onClick}
     ariaLabel="User Account"
-    icon={<User size={22} strokeWidth={1.5} />}
+    icon={<MaterialIcon name="person" size={22} fill={isActive} />}
     isActive={isActive}
   />
 );
@@ -154,14 +114,13 @@ export const CartIcon = ({ onClick, count = 2 }) => (
   <IconButton
     onClick={onClick}
     ariaLabel="Shopping Cart"
-    icon={<ShoppingBag size={22} strokeWidth={1.5} />}
+    icon={<MaterialIcon name="shopping_bag" size={22} />}
     badgeCount={count}
   />
 );
 
-// ==========================================
 // 4. DESKTOP NAV COMPONENT
-// ==========================================
+
 export const DesktopNav = ({
   activePath,
   onOpenSearch,
@@ -191,9 +150,9 @@ export const DesktopNav = ({
           <Logo />
         </div>
 
-        <nav className="flex items-center space-x-[32px] h-full" aria-label="Primary Navigation">
+        <nav className="flex items-center space-x-[24px] h-full" aria-label="Primary Navigation">
           {primaryMenuItems.map((item) => {
-            const isActive = activePath.startsWith(item.href) || (activePath === '/' && item.slug === 'mobile');
+            const isActive = activePath.startsWith(item.href);
             return (
               <NavItem
                 key={item.slug}
@@ -206,10 +165,13 @@ export const DesktopNav = ({
         </nav>
       </div>
 
+      {/* Gray vertical separator line */}
+      <div className="hidden lg:block w-[1px] h-[14px] bg-[#D1D1D1] mx-[16px] self-center" />
+
       {/* RIGHT PORTION: Secondary Navigation + Icons */}
       <div className="flex items-center h-full">
         {/* Secondary Navigation */}
-        <nav className="flex items-center space-x-[32px] mr-[32px] h-full" aria-label="Secondary Navigation">
+        <nav className="flex items-center space-x-[24px] mr-[32px] h-full" aria-label="Secondary Navigation">
           {secondaryMenuItems.map((item) => {
             const isActive = activePath.startsWith(item.href);
             return (
@@ -233,9 +195,9 @@ export const DesktopNav = ({
   );
 };
 
-// ==========================================
+
 // 5. MOBILE NAV COMPONENT
-// ==========================================
+
 export const MobileNav = ({
   onOpenDrawer,
   onOpenSearch,
@@ -247,9 +209,9 @@ export const MobileNav = ({
       <button
         onClick={onOpenDrawer}
         aria-label="Open Navigation Drawer"
-        className="p-2 -ml-2 rounded-full text-gray-700 hover:bg-gray-100 transition-colors cursor-pointer"
+        className="p-2 -ml-2 rounded-full text-gray-700 hover:bg-gray-100 transition-colors cursor-pointer flex items-center justify-center"
       >
-        <Menu size={24} />
+        <MaterialIcon name="menu" size={24} />
       </button>
 
       {/* Center: Brand Logo */}
@@ -268,9 +230,8 @@ export const MobileNav = ({
 
 // Mega menu removed
 
-// ==========================================
 // 7. SEARCH OVERLAY COMPONENT
-// ==========================================
+
 export const SearchOverlay = ({
   isOpen,
   onClose,
@@ -331,7 +292,7 @@ export const SearchOverlay = ({
           {/* TOP SEARCH HEADER */}
           <div className="sticky top-0 bg-white/95 backdrop-blur-md border-b border-gray-100 z-10 px-6 py-5">
             <div className="max-w-[1440px] mx-auto flex items-center gap-4">
-              <Search size={28} className="text-[#FF6900] shrink-0" />
+              <MaterialIcon name="search" size={28} className="text-[#FF6900] shrink-0" />
               <input
                 ref={inputRef}
                 type="text"
@@ -344,9 +305,9 @@ export const SearchOverlay = ({
                 <button
                   onClick={() => setQuery('')}
                   aria-label="Clear search"
-                  className="p-1.5 rounded-full text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors"
+                  className="p-1.5 rounded-full text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors flex items-center justify-center"
                 >
-                  <X size={20} />
+                  <MaterialIcon name="close" size={20} />
                 </button>
               )}
               <motion.button
@@ -356,7 +317,7 @@ export const SearchOverlay = ({
                 aria-label="Close search overlay"
                 className="p-2.5 rounded-full bg-gray-100 text-gray-700 hover:bg-[#FF6900] hover:text-white transition-colors ml-2 cursor-pointer flex items-center justify-center shrink-0"
               >
-                <X size={24} />
+                <MaterialIcon name="close" size={24} />
               </motion.button>
             </div>
           </div>
@@ -375,7 +336,7 @@ export const SearchOverlay = ({
 
                 {searchResults.length === 0 ? (
                   <div className="text-center py-20 bg-gray-50 rounded-3xl border border-dashed border-gray-200">
-                    <Search size={48} className="text-gray-300 mx-auto mb-4" />
+                    <MaterialIcon name="search" size={48} className="text-gray-300 mx-auto mb-4" />
                     <h4 className="text-lg font-semibold text-gray-700">No products found</h4>
                     <p className="text-sm text-gray-500 mt-1">Try checking your spelling or searching for another term like "14 Ultra" or "Watch".</p>
                   </div>
@@ -423,9 +384,9 @@ export const SearchOverlay = ({
   );
 };
 
-// ==========================================
+
 // 8. MOBILE DRAWER COMPONENT
-// ==========================================
+
 export const MobileDrawer = ({
   isOpen,
   onClose,
@@ -437,6 +398,7 @@ export const MobileDrawer = ({
   const [showLangDropdown, setShowLangDropdown] = useState(false);
 
   const mainNavItems = [
+    { label: 'Home', href: '/', slug: 'home' },
     { label: 'Mobile', href: '/mobile', slug: 'mobile', hasSub: true },
     { label: 'Wearables', href: '/wearables', slug: 'wearables', hasSub: true },
     { label: 'Smart Home', href: '/smart-home', slug: 'smart-home', hasSub: true },
@@ -493,9 +455,9 @@ export const MobileDrawer = ({
               <button
                 onClick={onClose}
                 aria-label="Close menu"
-                className="p-2 rounded-full text-gray-500 hover:text-gray-800 hover:bg-gray-200/60 transition-colors"
+                className="p-2 rounded-full text-gray-500 hover:text-gray-800 hover:bg-gray-200/60 transition-colors flex items-center justify-center"
               >
-                <X size={22} />
+                <MaterialIcon name="close" size={22} />
               </button>
             </div>
 
@@ -509,7 +471,7 @@ export const MobileDrawer = ({
                 </span>
                 <div className="space-y-1">
                   {mainNavItems.map((item) => {
-                    const isActive = activePath === item.href;
+                    const isActive = item.href === '/' ? activePath === '/' : activePath.startsWith(item.href);
                     const isExpanded = expandedCategory === item.slug;
                     const catData = XIAOMI_CATEGORIES[item.slug];
 
@@ -519,20 +481,21 @@ export const MobileDrawer = ({
                           <Link
                              to={item.href}
                              onClick={onClose}
-                             className={`flex-1 px-3 py-3 text-[16px] font-medium transition-colors ${
+                             className={`flex-1 px-3 py-3 text-[16px] font-medium transition-colors flex items-center ${
                                isActive ? 'text-[#FF6900] font-semibold' : 'text-[#191919] hover:text-[#FF6900]'
                              }`}
                           >
-                            {item.label}
+                            <span>{item.label}</span>
                           </Link>
                           {item.hasSub && catData && (
                             <button
                               onClick={() => toggleExpand(item.slug)}
                               aria-expanded={isExpanded}
                               aria-label={`Toggle ${item.label} subcategories`}
-                              className="p-3 text-gray-400 hover:text-[#FF6900] transition-colors"
+                              className="p-3 text-gray-400 hover:text-[#FF6900] transition-colors flex items-center justify-center"
                             >
-                              <ChevronDown
+                              <MaterialIcon
+                                name="keyboard_arrow_down"
                                 size={18}
                                 className={`transition-transform duration-200 ${
                                   isExpanded ? 'rotate-180 text-[#FF6900]' : ''
@@ -561,7 +524,7 @@ export const MobileDrawer = ({
                                     className="block py-1.5 text-sm text-gray-600 hover:text-[#FF6900] transition-colors font-medium flex items-center justify-between group"
                                   >
                                     <span>{sub.name}</span>
-                                    <ChevronRight size={14} className="text-gray-300 group-hover:text-[#FF6900] group-hover:translate-x-1 transition-all" />
+                                    <MaterialIcon name="chevron_right" size={14} className="text-gray-300 group-hover:text-[#FF6900] group-hover:translate-x-1 transition-all" />
                                   </Link>
                                 ))}
                               </div>
@@ -589,13 +552,13 @@ export const MobileDrawer = ({
                         key={item.label}
                         to={item.href}
                         onClick={onClose}
-                        className={`block px-3 py-3 rounded-xl text-[16px] font-medium transition-colors ${
+                        className={`block px-3 py-3 rounded-xl text-[16px] font-medium transition-colors flex items-center ${
                           isActive
                             ? 'bg-orange-50 text-[#FF6900] font-semibold'
                             : 'text-[#191919] hover:bg-gray-50 hover:text-[#FF6900]'
                         }`}
                       >
-                        {item.label}
+                        <span>{item.label}</span>
                       </Link>
                     );
                   })}
@@ -615,7 +578,7 @@ export const MobileDrawer = ({
                 }}
                 className="w-full py-3 px-4 bg-[#FF6900] hover:bg-[#e05d00] text-white rounded-xl font-semibold text-sm transition-colors shadow-sm flex items-center justify-center gap-2 cursor-pointer"
               >
-                <LogIn size={18} />
+                <MaterialIcon name="login" size={18} />
                 <span>Sign In / Register</span>
               </motion.button>
 
@@ -626,10 +589,10 @@ export const MobileDrawer = ({
                   className="w-full py-2.5 px-3 bg-white border border-gray-200 rounded-xl text-xs font-medium text-gray-700 flex items-center justify-between hover:border-gray-300 transition-colors"
                 >
                   <div className="flex items-center gap-2">
-                    <Globe size={16} className="text-gray-500" />
+                    <MaterialIcon name="language" size={16} className="text-gray-500" />
                     <span>Region / Language: <strong>{selectedLang}</strong></span>
                   </div>
-                  <ChevronDown size={14} className="text-gray-400" />
+                  <MaterialIcon name="keyboard_arrow_down" size={14} className="text-gray-400" />
                 </button>
 
                 {showLangDropdown && (
@@ -660,9 +623,9 @@ export const MobileDrawer = ({
   );
 };
 
-// ==========================================
+
 // 9. CORE NAVBAR COMPONENT
-// ==========================================
+
 export const Navbar = ({
   onSelectProduct,
   onOpenAuthModal,
@@ -676,6 +639,11 @@ export const Navbar = ({
 
   // Handle scroll event for sticky background blur and shadow
   useEffect(() => {
+    const fontImport = document.createElement('link');
+    fontImport.href = 'https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap';
+    fontImport.rel = 'stylesheet';
+    document.head.appendChild(fontImport);
+
     const handleScroll = () => {
       if (window.scrollY > 15) {
         setIsScrolled(true);
