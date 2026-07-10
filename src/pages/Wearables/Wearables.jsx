@@ -13,14 +13,8 @@ export const Wearables = ({
   onOpenCartModal,
   cartCount,
 }) => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const activeSubCat = searchParams.get('cat') || 'all';
-  const categoryData = XIAOMI_CATEGORIES.wearables;
-
-  const products = categoryData.products.filter(
-    (p) => activeSubCat === 'all' || p.subCategory === activeSubCat
-  );
-
+ 
+  
   return (
     <div className="min-h-screen bg-white">
       {/* Navbar rendered inside page */}
@@ -29,9 +23,27 @@ export const Wearables = ({
         onOpenAuthModal={onOpenAuthModal}
         onOpenCartModal={onOpenCartModal}
         cartCount={cartCount}
-      />
+      />              
+      
+     <div className="smartwatch h-[168px] bg-gray-200 flex items-center justify-center">
+        <div className="SM flex flex-col items-center gap-3">
+        <h2 className="text-[26px]">Smart Watch</h2>
+        <p className="w-[90px] h-[40px] bg-gray-950 rounded-[12px] text-[16px] text-white flex items-center justify-center">  More
 
-      {/* Footer rendered inside page */}
+         </p>
+       </div>
+  
+    </div>
+    <div className="herowatch">
+     <img src="https://i02.appmifile.com/38_operator_global/28/05/2026/b847290ce845d16c08da77a1d118a082.jpg?thumb=1&w=2560&f=webp&q=85" alt="" />
+     
+    </div>
+    
+
+
+
+     
+   
       <Footer />
     </div>
   );

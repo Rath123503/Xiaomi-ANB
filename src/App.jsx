@@ -20,7 +20,7 @@ function ScrollToTop() {
     window.scrollTo(0, 0);
   }, [pathname]);
   return null;
-}
+} 
 
 export default function App() {
   // Initial cart items (Watch S3 and 120W Charger)
