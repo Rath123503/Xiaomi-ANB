@@ -93,17 +93,17 @@ export const IconButton = ({
   );
 };
 
-export const SearchIcon = ({ onClick }) => (
+// Search and Account icons are intentionally non-interactive (no onClick) —
+// clicking them currently does nothing.
+export const SearchIcon = () => (
   <IconButton
-    onClick={onClick}
-    ariaLabel="Open Search"
+    ariaLabel="Search"
     icon={<MaterialIcon name="search" size={22} />}
   />
 );
 
-export const AccountIcon = ({ onClick, isActive }) => (
+export const AccountIcon = ({ isActive }) => (
   <IconButton
-    onClick={onClick}
     ariaLabel="User Account"
     icon={<MaterialIcon name="person" size={22} fill={isActive} />}
     isActive={isActive}
@@ -185,10 +185,10 @@ export const DesktopNav = ({
           })}
         </nav>
 
-        {/* Icons (Search, Account) with clean spacing and no border */}
+        {/* Icons (Search, Account) — non-interactive, clicks do nothing */}
         <div className="flex items-center space-x-[24px]">
-          <SearchIcon onClick={onOpenSearch} />
-          <AccountIcon onClick={onOpenAccount} />
+          <SearchIcon />
+          <AccountIcon />
         </div>
       </div>
     </div>
@@ -219,10 +219,10 @@ export const MobileNav = ({
         <Logo />
       </div>
 
-      {/* Right: Search, Account icons */}
+      {/* Right: Search, Account icons — non-interactive, clicks do nothing */}
       <div className="flex items-center gap-1.5">
-        <SearchIcon onClick={onOpenSearch} />
-        <AccountIcon onClick={onOpenAccount} />
+        <SearchIcon />
+        <AccountIcon />
       </div>
     </div>
   );
@@ -231,6 +231,8 @@ export const MobileNav = ({
 // Mega menu removed
 
 // 7. SEARCH OVERLAY COMPONENT
+// Note: no longer triggered from the navbar (Search icon click is disabled),
+// kept here in case it's opened from elsewhere in the app.
 
 export const SearchOverlay = ({
   isOpen,
@@ -676,23 +678,19 @@ export const Navbar = ({
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8">
           <DesktopNav
             activePath={location.pathname}
-            onOpenSearch={() => setIsSearchOpen(true)}
-            onOpenAccount={() => onOpenAuthModal?.()}
             onOpenCart={() => onOpenCartModal?.()}
             cartCount={cartCount}
           />
 
           <MobileNav
             onOpenDrawer={() => setIsDrawerOpen(true)}
-            onOpenSearch={() => setIsSearchOpen(true)}
-            onOpenAccount={() => onOpenAuthModal?.()}
             onOpenCart={() => onOpenCartModal?.()}
             cartCount={cartCount}
           />
         </div>
       </header>
 
-      {/* Fullscreen Search Overlay */}
+      {/* Fullscreen Search Overlay — no longer opened from the navbar */}
       <SearchOverlay
         isOpen={isSearchOpen}
         onClose={() => setIsSearchOpen(false)}
