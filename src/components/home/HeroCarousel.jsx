@@ -175,16 +175,16 @@ export const HeroCarousel = ({ onSelectProduct }) => {
               <div className="space-y-1">
                 <div className="flex items-center flex-wrap gap-2">
                   <span
-                    className={`text-4xl sm:text-5xl font-sans tracking-tight text-slate-800 ${activeSlide.brand === "xiaomi" ? "font-light" : "font-bold"}`}
+                    className={`text-4xl sm:text-5xl font-sans tracking-tight text-gray-950 ${activeSlide.brand === "xiaomi" ? "font-light" : "font-bold"}`}
                   >
                     {activeSlide.brand}
                   </span>
-                  <span className="text-4xl sm:text-5xl font-sans font-[medium] tracking-tight text-slate-800">
+                  <span className="text-4xl sm:text-5xl font-sans font-[medium] tracking-tight text-gray-950">
                     {activeSlide.model}
                   </span>
                   {activeSlide.showLeica && <LeicaLogo />}
                 </div>
-                <p className="text-lg sm:text-xl text-slate-800 font-medium">
+                <p className="text-lg sm:text-xl text-gray-950 font-medium">
                   {activeSlide.subtitle}
                 </p>
               </div>
