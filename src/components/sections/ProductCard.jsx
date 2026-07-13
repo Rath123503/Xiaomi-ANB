@@ -2,7 +2,7 @@ import React from 'react';
 
 const ProductCard = ({ title, description, imageUrl, buttonText = "Learn more" }) => {
   return (
-    <div className="flex flex-col items-center justify-start bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition duration-300 h-full">
+    <div className="flex flex-col items-center justify-start bg-white  p-8 shadow-sm hover:shadow-md transition duration-300 h-full">
       {/* Title */}
       <h3 className="text-2xl font-bold text-black text-center mb-2">
         {title}
