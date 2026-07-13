@@ -122,8 +122,7 @@ export const SmartHomeHeroCarousel = ({ onSelectProduct }) => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
-          onClick={() => onSelectProduct(activeSlide.productSearch)}
-          className={`absolute inset-0 w-full h-full flex items-center cursor-pointer overflow-hidden ${activeSlide.bgClass}`}
+          className={`absolute inset-0 w-full h-full flex items-center overflow-hidden ${activeSlide.bgClass}`}
         >
           {/* Full Card Background Image */}
           <motion.img
@@ -177,12 +176,12 @@ export const SmartHomeHeroCarousel = ({ onSelectProduct }) => {
               {/* Action Button */}
               <div className="pt-2">
                 {/* CHANGED: hover state is now white (was orange), and the
-                    click handler is removed — no add-to-cart / navigation,
+                    click handler is removed — no -to-cartadd / navigation,
                     same as the static "Learn more" buttons on the
                     TVs & HA and Vacuum Cleaners cards. */}
                 <button
                   onClick={(e) => e.stopPropagation()}
-                  className="px-8 py-3 bg-white hover:bg-white text-[#191919] text-sm font-semibold rounded-full transition-all tracking-wide cursor-pointer shadow-lg shadow-black/20 active:scale-95"
+                  className="px-8 py-3 bg-white hover:bg-white text-[#191919] text-sm font-semibold rounded-lg transition-all tracking-wide cursor-pointer shadow-lg shadow-black/20 active:scale-95"
                 >
                   {activeSlide.btnText}
                 </button>
