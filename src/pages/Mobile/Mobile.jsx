@@ -31,7 +31,7 @@ export const Mobile = ({
         cartCount={cartCount}
       />
 
-  
+
       {/* Footer rendered inside page */}
       <Footer />
     </div>
