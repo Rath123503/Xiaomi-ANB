@@ -8,15 +8,6 @@ import { Footer } from "../../components/layout/Footer/Footer";
 import { featuredCollections } from "../../data/featuredProducts";
 import { XiaomiSupport } from "../../components/home/XiaomiSupport";
 
-// Helper to find or map a product so that click works
-const findProductByName = (name) => {
-  return (
-    ALL_PRODUCTS.find((p) =>
-      p.name.toLowerCase().includes(name.toLowerCase()),
-    ) || ALL_PRODUCTS[0]
-  );
-};
-
 const containerVariants = {
   hidden: { opacity: 0 },
   show: {
@@ -152,21 +143,6 @@ export const Home = ({
     }
   }, []);
 
-  const handleProductClick = (name) => {
-    const prod = findProductByName(name);
-    if (onSelectProduct && prod) {
-      onSelectProduct(prod);
-    }
-  };
-
-  const handleBuyClick = (name, e) => {
-    e.stopPropagation();
-    const prod = findProductByName(name);
-    if (onAddToCart && prod) {
-      onAddToCart(prod);
-    }
-  };
-
   const handleExploreNext = () => {
     const container = exploreScrollRef.current;
     if (!container) return;
@@ -208,7 +184,7 @@ export const Home = ({
       />
 
       {/* HERO CAROUSEL */}
-      <HeroCarousel onSelectProduct={handleProductClick} />
+      <HeroCarousel />
 
       {/* 1. Featured Products Section */}
       <section className="bg-neutral-50/50 pt-16 pb-16 px-4 sm:px-6 md:px-8 border-b border-gray-100">
@@ -302,9 +278,6 @@ export const Home = ({
                           </p>
 
                           <button
-                            onClick={() =>
-                              handleProductClick(collection.hero.name)
-                            }
                             className="px-8 py-3 bg-[#191919] hover:bg-gray-700 text-white text-sm font-bold rounded-lg transition-all duration-300 shadow-xs hover:shadow-md tracking-wider active:scale-95"
                           >
                             {collection.hero.button}
@@ -319,8 +292,7 @@ export const Home = ({
                         <motion.div
                           key={idx}
                           variants={itemVariants}
-                          className="bg-[#FAFAFA] rounded-2xl flex items-center p-8 sm:p-12 hover:shadow-lg hover:bg-[#F5F5F5] transition-all duration-300 transform hover:-translate-y-[6px] border border-gray-100 group shadow-xs cursor-pointer w-full md:w-[554px] md:h-[348px]"
-                          onClick={() => handleProductClick(product.name)}
+                          className="bg-[#FAFAFA] rounded-2xl flex items-center p-8 sm:p-12 hover:shadow-lg hover:bg-[#F5F5F5] transition-all duration-300 transform hover:-translate-y-[6px] border border-gray-100 group shadow-xs w-full md:w-[554px] md:h-[348px]"
                         >
                           <div className="w-1/2 flex items-center justify-center shrink-0 select-none overflow-hidden rounded-xl">
                             <motion.img
@@ -392,8 +364,7 @@ export const Home = ({
           {loopedExploreItems.map((item) => (
             <div
               key={item.cloneKey}
-              className="min-w-[290px] sm:min-w-[664px] md:min-w-[664px] max-w-[664px] w-full h-[420px] md:h-[480px] bg-white rounded-lg overflow-hidden border border-gray-100 hover:border-gray-200/50 hover:shadow-lg transition-all duration-300 flex flex-col snap-start cursor-pointer group shrink-0"
-              onClick={() => handleProductClick(item.title)}
+              className="min-w-[290px] sm:min-w-[664px] md:min-w-[664px] max-w-[664px] w-full h-[420px] md:h-[480px] bg-white rounded-lg overflow-hidden border border-gray-100 hover:border-gray-200/50 hover:shadow-lg transition-all duration-300 flex flex-col snap-start group shrink-0"
             >
               <div className="w-full h-[280px] md:h-[336px] overflow-hidden bg-white relative">
                 <img
