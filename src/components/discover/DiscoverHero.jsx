@@ -30,6 +30,7 @@ const DiscoverHero = () => {
       </div>
 
       {/* Left Arrow */}
+      
       <button className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/40 rounded-full flex items-center justify-center">
         <MaterialIcon
           name="chevron_left"

@@ -11,6 +11,7 @@ const DiscoverBanner = () => {
         Explore the latest Xiaomi stories, articles, videos,
         innovation, smart living, and community updates.
       </p>
+      
     </div>
   );
 };
