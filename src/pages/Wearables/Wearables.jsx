@@ -1,10 +1,9 @@
 import React from 'react';
-import { useSearchParams, Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'motion/react';
-import { XIAOMI_CATEGORIES } from '../../data/xiaomiProducts';
 import { Navbar } from '../../components/layout/Navbar/Navbar';
 import { Footer } from '../../components/layout/Footer/Footer';
-import { MaterialIcon } from '../../components/common/MaterialIcon';
+import { wearablesCategory, wearablesProducts } from "../../data/WearablesProducts";
+import { WearablesHero } from "../../components/sections/WearablesHero"
+import ProductCard from "../../components/sections/ProductCard";
 
 export const Wearables = ({
   onSelectProduct,
@@ -13,28 +12,51 @@ export const Wearables = ({
   onOpenCartModal,
   cartCount,
 }) => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const activeSubCat = searchParams.get('cat') || 'all';
-  const categoryData = XIAOMI_CATEGORIES.wearables;
-
-  const products = categoryData.products.filter(
-    (p) => activeSubCat === 'all' || p.subCategory === activeSubCat
-  );
-
   return (
     <div className="min-h-screen bg-white">
-      {/* Navbar rendered inside page */}
       <Navbar
         onSelectProduct={onSelectProduct}
         onOpenAuthModal={onOpenAuthModal}
         onOpenCartModal={onOpenCartModal}
         cartCount={cartCount}
+      />    
+
+      <section className="bg-[#f7f7f7] py-14">
+        <div className="mx-auto max-w-6xl px-6 text-center">
+          <h2 className="text-3xl font-semibold text-black">Smart Watch</h2>
+          <button className="mt-6 inline-flex h-[44px] items-center justify-center rounded-xl bg-black px-8 text-sm font-medium text-white transition hover:bg-gray-900">
+            More
+          </button>
+        </div>
+      </section>
+
+      <WearablesHero
+        title={wearablesCategory.featuredTitle}
+        subtitle={wearablesCategory.featuredSubtitle}
+        button={wearablesCategory.featuredButton}
+        image={wearablesCategory.featuredImage}
       />
 
-      {/* Footer rendered inside page */}
+      <section className="py-20 bg-gray-100">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {wearablesProducts.map((product) => (
+              <ProductCard 
+                key={product.id}
+                title={product.name}
+                description={product.subtitle}
+                imageUrl={product.image}
+                buttonText="Learn more"
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+ 
       <Footer />
     </div>
   );
 };
 
 export default Wearables;
+ 

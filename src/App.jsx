@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-route
 import { Home } from './pages/Home/Home';
 import { Mobile } from './pages/Mobile/Mobile';
 import { Wearables } from './pages/Wearables/Wearables';
-import { SmartHome } from './pages/SmartHome/SmartHome';
+import { SmartHome, TvsAndHA, VacuumCleaners, EnvironmentAppliance, KitchenAppliance, CookingAppliances, SmartLightings, HomeSecurity } from './pages/SmartHome/SmartHome';
 import { Discover } from './pages/Discover/Discover';
 import { Support } from './pages/Support/Support';
 import { ProductModal } from './components/common/Modal/ProductModal';
@@ -13,6 +13,7 @@ import { XIAOMI_CATEGORIES } from './data/xiaomiProducts';
 import { MaterialIcon } from './components/common/MaterialIcon';
 import { motion, AnimatePresence } from 'motion/react';
 
+
 // ScrollToTop helper on route change
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -20,7 +21,7 @@ function ScrollToTop() {
     window.scrollTo(0, 0);
   }, [pathname]);
   return null;
-}
+} 
 
 export default function App() {
   // Initial cart items (Watch S3 and 120W Charger)
@@ -127,6 +128,93 @@ export default function App() {
               path="/smart-home"
               element={
                 <SmartHome
+                  onSelectProduct={(p) => setSelectedProduct(p)}
+                  onAddToCart={handleAddToCart}
+                  onOpenAuthModal={() => setIsAuthOpen(true)}
+                  onOpenCartModal={() => setIsCartOpen(true)}
+                  cartCount={cartCount}
+                />
+              }
+            />
+
+            {/* TVs & HA listing page — reached via the "More" button
+                and "All Products" arrow on the Smart Home page. */}
+            <Route
+              path="/smart-home/tvs-ha"
+              element={
+                <TvsAndHA
+                  onSelectProduct={(p) => setSelectedProduct(p)}
+                  onAddToCart={handleAddToCart}
+                  onOpenAuthModal={() => setIsAuthOpen(true)}
+                  onOpenCartModal={() => setIsCartOpen(true)}
+                  cartCount={cartCount}
+                />
+              }
+            />
+            <Route
+              path="/smart-home/vacuum-cleaners"
+              element={
+                <VacuumCleaners
+                  onSelectProduct={(p) => setSelectedProduct(p)}
+                  onAddToCart={handleAddToCart}
+                  onOpenAuthModal={() => setIsAuthOpen(true)}
+                  onOpenCartModal={() => setIsCartOpen(true)}
+                  cartCount={cartCount}
+                />
+              }
+            />
+            <Route
+              path="/smart-home/environment-appliance"
+              element={
+                <EnvironmentAppliance
+                  onSelectProduct={(p) => setSelectedProduct(p)}
+                  onAddToCart={handleAddToCart}
+                  onOpenAuthModal={() => setIsAuthOpen(true)}
+                  onOpenCartModal={() => setIsCartOpen(true)}
+                  cartCount={cartCount}
+                />
+              }
+            />
+            <Route
+              path="/smart-home/kitchen-appliance"
+              element={
+                <KitchenAppliance
+                  onSelectProduct={(p) => setSelectedProduct(p)}
+                  onAddToCart={handleAddToCart}
+                  onOpenAuthModal={() => setIsAuthOpen(true)}
+                  onOpenCartModal={() => setIsCartOpen(true)}
+                  cartCount={cartCount}
+                />
+              }
+            />
+            <Route
+              path="/smart-home/cooking-appliances"
+              element={
+                <CookingAppliances
+                  onSelectProduct={(p) => setSelectedProduct(p)}
+                  onAddToCart={handleAddToCart}
+                  onOpenAuthModal={() => setIsAuthOpen(true)}
+                  onOpenCartModal={() => setIsCartOpen(true)}
+                  cartCount={cartCount}
+                />
+              }
+            />
+            <Route
+              path="/smart-home/smart-lightings"
+              element={
+                <SmartLightings
+                  onSelectProduct={(p) => setSelectedProduct(p)}
+                  onAddToCart={handleAddToCart}
+                  onOpenAuthModal={() => setIsAuthOpen(true)}
+                  onOpenCartModal={() => setIsCartOpen(true)}
+                  cartCount={cartCount}
+                />
+              }
+            />
+            <Route
+              path="/smart-home/home-security"
+              element={
+                <HomeSecurity
                   onSelectProduct={(p) => setSelectedProduct(p)}
                   onAddToCart={handleAddToCart}
                   onOpenAuthModal={() => setIsAuthOpen(true)}
