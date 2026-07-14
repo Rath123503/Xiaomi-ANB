@@ -1,31 +1,36 @@
+import imgSkynomad from "./images/hero_skynomad.png";
+import imgIfa from "./images/hero_ifa.png";
+import imgYu7gt from "./images/hero_yu7gt.png";
+import img17tSeries from "./images/hero_17t_series.png";
+
 const HeroData = [
   {
     id: 1,
-    title: "Xiaomi Discover",
-    subtitle: "Explore stories, innovation, technology and the Xiaomi ecosystem.",
-    button: "Explore Now",
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    title: "Xiaomi EV SkyNomad",
+    subtitle: "SUV Space. Redefined. Built on Kunlun Architecture.",
+    button: "Explore SUV",
+    image: imgSkynomad,
   },
   {
     id: 2,
-    title: "Xiaomi 17T Series",
-    subtitle: "The Telephoto Master",
+    title: "IFA 2026 Debut",
+    subtitle: "Reinforcing Xiaomi's long-term commitment to Europe in Berlin.",
     button: "Learn More",
-    image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9",
+    image: imgIfa,
   },
   {
     id: 3,
-    title: "Smart Living",
-    subtitle: "Build your AIoT ecosystem.",
-    button: "Explore",
-    image: "https://images.unsplash.com/photo-1558002038-1055907df827",
+    title: "Xiaomi YU7 GT Autonomous",
+    subtitle: "World's First Official Autonomous Driving Lap at Nürburgring Nordschleife.",
+    button: "Watch Lap",
+    image: imgYu7gt,
   },
   {
     id: 4,
-    title: "HyperOS",
-    subtitle: "Experience seamless connectivity.",
-    button: "Learn More",
-    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+    title: "Xiaomi 17T Series",
+    subtitle: "The Telephoto Master. Leica co-engineered imaging system.",
+    button: "Discover More",
+    image: img17tSeries,
   },
 ];
 

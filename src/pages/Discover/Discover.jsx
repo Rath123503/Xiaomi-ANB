@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Navbar } from "../../components/layout/Navbar/Navbar";
 import { Footer } from "../../components/layout/Footer/Footer";
 
@@ -13,6 +13,9 @@ export const Discover = ({
   onOpenCartModal,
   cartCount,
 }) => {
+  const [activeTab, setActiveTab] = useState("articles");
+  const [searchQuery, setSearchQuery] = useState("");
+
   return (
     <div className="min-h-screen bg-[#F4F4F4]">
       <Navbar
@@ -23,13 +26,14 @@ export const Discover = ({
       />
 
       <main className="max-w-[1200px] mx-auto px-8 pt-1 pb-8">
-        <DiscoverMenu />
+        <DiscoverMenu activeTab={activeTab} setActiveTab={setActiveTab} />
 
-        <DiscoverSearch />
+        <DiscoverSearch searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
-        <DiscoverHero />
+        {/* Only show Hero on Recommended or when not searching */}
+        {!searchQuery && activeTab === "recommended" && <DiscoverHero />}
 
-        <DiscoverGrid />
+        <DiscoverGrid activeTab={activeTab} searchQuery={searchQuery} />
       </main>
 
       <Footer />
