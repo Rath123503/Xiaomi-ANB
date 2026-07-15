@@ -9,7 +9,7 @@ import { Support } from './pages/Support/Support';
 import { ProductModal } from './components/common/Modal/ProductModal';
 import { AuthModal } from './components/common/Modal/AuthModal';
 import { CartModal } from './components/common/Modal/CartModal';
-import { XIAOMI_CATEGORIES } from './data/xiaomiProducts';
+import { XIAOMI_CATEGORIES } from './data/XiaomiProducts';
 import { MaterialIcon } from './components/common/MaterialIcon';
 import { motion, AnimatePresence } from 'motion/react';
 

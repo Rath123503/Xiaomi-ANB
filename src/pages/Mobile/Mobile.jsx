@@ -271,7 +271,105 @@ export const Mobile = ({
         cartCount={cartCount}
       />
 
-  
+      {/* --- SECTION 1: XIAOMI SERIES --- */}
+      <section>
+        {activeSubCat === "all" && (
+          <>
+            <SectionHeader
+              title="Xiaomi Series"
+              subtitle="A new era of exquisite design"
+            />
+            <PromoBanner
+              image="https://i02.appmifile.com/979_operator_global/28/05/2026/9cf9bbab4fa776be3219c9c13fa17fb8.jpg?thumb=1&w=5120&f=webp&q=85"
+              title="Xiaomi 17T Pro"
+              subtitle="The Telephoto Master"
+            />
+          </>
+        )}
+        <ProductGrid
+          products={xiaomiGridProducts}
+          onViewAll={() => handleTabClick("all")}
+        />
+      </section>
+
+      {/* --- SECTION 2: REDMI SERIES --- */}
+      <section>
+        <SectionHeader title="REDMI Series" subtitle="The Performance Racer" />
+        <PromoBannerLeft
+          image="https://i02.appmifile.com/172_operator_global/15/01/2026/b2dbe7156698eb05c92e6f2dd524967f.jpg?thumb=1&w=2560&f=webp&q=85"
+          title="REDMI Note 15 Pro+"
+          subtitle="It's titan tough"
+        />
+        <PromoCardGrid promos={defaultPromos} />
+
+        <div className="bg-[#F5F7FA] pb-6 flex flex-col">
+          <ProductFourGrid products={redmiFourProducts} />
+          <div className="-mt-12">
+            <ProductGrid
+              products={newFooterProducts}
+              onViewAll={() => handleTabClick("all")}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* --- SECTION 3: POCO PHONES --- */}
+      <section>
+        {activeSubCat === "all" && (
+          <>
+            <SectionHeader title="POCO Phones" />
+            <div className="[&_h2]:!text-gray-200 [&_p]:!text-gray-200 [&_button]:bg-gray-200 [&_button]:text-[#191919] [&_button]:hover:bg-gray-300">
+              <PromoBanner
+                image="https://i02.appmifile.com/44_operator_global/17/03/2026/9bf357e161db05d7df48d515be6e6271.jpg?thumb=1&w=2560&f=webp&q=85"
+                title="POCO X8 Pro Max"
+                subtitle="Speed to the max"
+              />
+            </div>
+
+            <PromoCardGrid promos={pocoPromos} />
+
+            <div className="bg-[#F5F7FA] pb-6 flex flex-col ">
+              <div>
+                <ProductFourGrid products={pocoFourProducts} />
+              </div>
+
+              <div className="-mt-12">
+                <ProductGrid products={pocoGridProducts} />
+              </div>
+            </div>
+          </>
+        )}
+      </section>
+
+      {/* --- SECTION 4: TABLET --- */}
+      <section>
+        <SectionHeader title="Table" />
+        <div className="[&_h2]:!text-gray-200 [&_h3]:!text-gray-200 [&_p]:!text-gray-200 [&_button]:bg-gray-200 [&_button]:text-[#191919] [&_button]:hover:bg-gray-300">
+          <PromoBannerLeft
+            image="https://i02.appmifile.com/314_operator_global/27/02/2026/d943c4f255c68639262c7b7d30ab3e3f.jpg?thumb=1&w=2560&f=webp&q=85"
+            title="XIAOMI Pad 8 Pro"
+            subtitle="Powerfully productive"
+          />
+        </div>
+
+        {/* small-2 card */}
+        <PromoCardGrid promos={tabletPromos} />
+
+        {/* TabletGrid */}
+        <TabletPromoGrid promos={tabletGridPromos} />
+      </section>
+      {/* End Section 4: Tablet */}
+
+      {/* Section 5: Laptop */}
+      <section>
+        <SectionHeader title="Laptop" />
+        <PromoBannerLeft
+          image="https://i02.appmifile.com/133_operator_global/18/06/2024/bff02ac4d775e87cacc1ab57747ff053.jpg?thumb=1&w=2560&f=webp&q=85"
+          title="XIAOMIBook S 12.4"
+          subtitle="Productivity meets versatility"
+        />
+      </section>
+
       {/* Footer rendered inside page */}
       <Footer />
     </div>

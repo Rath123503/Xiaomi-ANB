@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { ALL_PRODUCTS } from "../../data/xiaomiProducts";
+import { ALL_PRODUCTS } from "../../data/XiaomiProducts";
 import { HeroCarousel } from "../../components/home/HeroCarousel";
 import { MaterialIcon } from "../../components/common/MaterialIcon";
 import { Navbar } from "../../components/layout/Navbar/Navbar";

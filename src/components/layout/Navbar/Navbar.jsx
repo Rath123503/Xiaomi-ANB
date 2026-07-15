@@ -10,7 +10,7 @@ import {
   RECENT_SEARCHES, 
   POPULAR_PRODUCTS, 
   ALL_PRODUCTS 
-} from '../../../data/xiaomiProducts';
+} from '../../../data/XiaomiProducts';
 
 // 1. LOGO COMPONENT
 
@@ -132,14 +132,14 @@ export const DesktopNav = ({
     { label: 'Mobile', href: '/mobile', slug: 'mobile' },
     { label: 'Wearables', href: '/wearables', slug: 'wearables' },
     { label: 'Smart Home', href: '/smart-home', slug: 'smart-home' },
-    { label: 'Lifestyle', href: '/lifestyle', slug: 'lifestyle' },
-    { label: 'POCO', href: '/poco', slug: 'poco' },
+    { label: 'Lifestyle' },
+    { label: 'POCO'},
   ];
 
   const secondaryMenuItems = [
     { label: 'Discover', href: '/discover' },
     { label: 'Support', href: '/support' },
-    { label: 'Community', href: '/community' },
+   
   ];
 
   return (
@@ -411,7 +411,7 @@ export const MobileDrawer = ({
   const secondaryNavItems = [
     { label: 'Discover', href: '/discover' },
     { label: 'Support', href: '/support' },
-    { label: 'Community', href: '/community' },
+
   ];
 
   const toggleExpand = (slug) => {
