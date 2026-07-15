@@ -3,7 +3,14 @@ import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-route
 import { Home } from './pages/Home/Home';
 import { Mobile } from './pages/Mobile/Mobile';
 import { Wearables } from './pages/Wearables/Wearables';
-import { SmartHome, TvsAndHA, VacuumCleaners, EnvironmentAppliance, KitchenAppliance, CookingAppliances, SmartLightings, HomeSecurity } from './pages/SmartHome/SmartHome';
+import { SmartHome } from './pages/SmartHome/SmartHome';
+import { TvsAndHA } from './pages/SmartHome/TvsAndHA';
+import { VacuumCleaners } from './pages/SmartHome/VacuumCleaners';
+import { EnvironmentAppliance } from './pages/SmartHome/EnvironmentAppliance';
+import { KitchenAppliance } from './pages/SmartHome/KitchenAppliance';
+import { CookingAppliances } from './pages/SmartHome/CookingAppliances';
+import { SmartLightings } from './pages/SmartHome/SmartLightings';
+import { HomeSecurity } from './pages/SmartHome/HomeSecurity';
 import { Discover } from './pages/Discover/Discover';
 import { Support } from './pages/Support/Support';
 import { ProductModal } from './components/common/Modal/ProductModal';
