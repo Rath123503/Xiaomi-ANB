@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-route
 import { Home } from './pages/Home/Home';
 import { Mobile } from './pages/Mobile/Mobile';
 import { Wearables } from './pages/Wearables/Wearables';
+import { WatchesPage } from "./pages/Wearables/WatchesPage";
 import { SmartHome } from './pages/SmartHome/SmartHome';
 import { TvsAndHA } from './pages/SmartHome/TvsAndHA';
 import { VacuumCleaners } from './pages/SmartHome/VacuumCleaners';
@@ -20,23 +21,19 @@ import { XIAOMI_CATEGORIES } from './data/XiaomiProducts';
 import { MaterialIcon } from './components/common/MaterialIcon';
 import { motion, AnimatePresence } from 'motion/react';
 
-
-// ScrollToTop helper on route change
 function ScrollToTop() {
   const { pathname } = useLocation();
   React.useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
   return null;
-} 
+}
 
 export default function App() {
-  // Initial cart items (Watch S3 and 120W Charger)
   const [cartItems, setCartItems] = useState([
-    // { product: XIAOMI_CATEGORIES.wearables.products[0], quantity: 1 },
     { product: XIAOMI_CATEGORIES.mobile.products[6], quantity: 1 },
   ]);
-
+  
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isAuthOpen, setIsAuthOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -92,7 +89,6 @@ export default function App() {
       <ScrollToTop />
       <div className="min-h-screen flex flex-col bg-white text-[#191919] font-sans selection:bg-[#FF6900] selection:text-white">
         
-        {/* MAIN PAGE ROUTER */}
         <main className="flex-1">
           <Routes>
             <Route
@@ -131,6 +127,21 @@ export default function App() {
                 />
               }
             />
+            
+            {/* ✅ ONLY WatchesPage Route - This is what matters */}
+            <Route
+              path="/watches"
+              element={
+                <WatchesPage
+                  onSelectProduct={(p) => setSelectedProduct(p)}
+                  onAddToCart={handleAddToCart}
+                  onOpenAuthModal={() => setIsAuthOpen(true)}
+                  onOpenCartModal={() => setIsCartOpen(true)}
+                  cartCount={cartCount}
+                />
+              }
+            />
+            
             <Route
               path="/smart-home"
               element={
@@ -143,9 +154,6 @@ export default function App() {
                 />
               }
             />
-
-            {/* TVs & HA listing page — reached via the "More" button
-                and "All Products" arrow on the Smart Home page. */}
             <Route
               path="/smart-home/tvs-ha"
               element={
@@ -230,7 +238,6 @@ export default function App() {
                 />
               }
             />
-
             <Route
               path="/discover"
               element={
@@ -253,37 +260,22 @@ export default function App() {
                 />
               }
             />
-            {/* <Route
-              path="/community"
-              element={
-                <Community
-                  onSelectProduct={(p) => setSelectedProduct(p)}
-                  onOpenAuthModal={() => setIsAuthOpen(true)}
-                  onOpenCartModal={() => setIsCartOpen(true)}
-                  cartCount={cartCount}
-                />
-              }
-            /> */}
-            {/* WILDCARD FALLBACK ROUTE TO PREVENT BLANK SCREEN ON UNMATCHED PATHS */}
-            {/* <Route path="*" element={<Navigate to="/" replace />} /> */}
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
 
-        {/* PRODUCT QUICK VIEW MODAL */}
         <ProductModal
           product={selectedProduct}
           onClose={() => setSelectedProduct(null)}
           onAddToCart={handleAddToCart}
         />
 
-        {/* ACCOUNT / AUTH MODAL */}
         <AuthModal
           isOpen={isAuthOpen}
           onClose={() => setIsAuthOpen(false)}
           onLoginSuccess={(user) => showToast(`Welcome back, ${user.name}!`)}
         />
 
-        {/* SHOPPING BAG DRAWER */}
         <CartModal
           isOpen={isCartOpen}
           onClose={() => setIsCartOpen(false)}
@@ -293,7 +285,6 @@ export default function App() {
           onClearCart={handleClearCart}
         />
 
-        {/* TOAST NOTIFICATION */}
         <AnimatePresence>
           {toastMessage && (
             <motion.div
