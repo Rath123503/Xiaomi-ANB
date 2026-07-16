@@ -2,7 +2,6 @@ import React from 'react';
 import { Navbar } from '../../components/layout/Navbar/Navbar';
 import { Footer } from '../../components/layout/Footer/Footer';
 import { SupportContent } from './SupportContent';
-// import { MaterialIcon } from '../../components/common/MaterialIcon';
 
 export const Support = ({
   onSelectProduct,
