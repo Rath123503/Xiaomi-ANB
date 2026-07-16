@@ -1,16 +1,16 @@
-import facebookBanner from '../pages/Support/images/facebookBanner.png';
-import warrantyBanner from '../pages/Support/images/warrantyBanner.png';
-import accessibilityBanner from '../pages/Support/images/accessibilityBanner.png';
-import repairBanner from '../pages/Support/images/repairBanner.png';
-import esgBanner from '../pages/Support/images/esgBanner.png';
-import productRecall from '../pages/Support/images/productRecall.png';
-import scooterIcon from '../pages/Support/images/scooterIcon.png';
-import rfExposureIcon from '../pages/Support/images/rfExposureIcon.png';
-import docIcon from '../pages/Support/images/docIcon.png';
-import aersIcon from '../pages/Support/images/aersIcon.png';
-import contactUs from '../pages/Support/images/contactUs.png';
-import termsPolicy from '../pages/Support/images/termsPolicy.png';
-import aboutXiaomi from '../pages/Support/images/aboutXiaomi.png';
+import facebookBanner from '../assets/images/facebookBanner.png';
+import warrantyBanner from '../assets/images/warrantyBanner.png';
+import accessibilityBanner from '../assets/images/accessibilityBanner.png';
+import repairBanner from '../assets/images/repairBanner.png';
+import esgBanner from '../assets/images/esgBanner.png';
+import productRecall from '../assets/images/productRecall.png';
+import scooterIcon from '../assets/images/scooterIcon.png';
+import rfExposureIcon from '../assets/images/rfExposureIcon.png';
+import docIcon from '../assets/images/docIcon.png';
+import aersIcon from '../assets/images/aersIcon.png';
+import contactUs from '../assets/images/contactUs.png';
+import termsPolicy from '../assets/images/termsPolicy.png';
+import aboutXiaomi from '../assets/images/aboutXiaomi.png';
 
 export const quickLinks = [
   { id: 'ql-account', label: 'Account Service', icon: 'User' },
