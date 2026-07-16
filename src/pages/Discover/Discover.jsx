@@ -7,14 +7,33 @@ import DiscoverSearch from "../../components/discover/DiscoverSearch";
 import DiscoverHero from "../../components/discover/DiscoverHero";
 import DiscoverGrid from "../../components/discover/DiscoverGrid";
 
+import DiscoverRecommended from "../../data/DiscoverRecommended";
+import DiscoverArticles from "../../data/DiscoverArticles";
+import DiscoverVideos from "../../data/DiscoverVideos";
+import DiscoverNewsroom from "../../data/DiscoverNewsroom";
+import DiscoverHeroData from "../../data/DiscoverHeroData";
+
+const tabContent = {
+  Recommended: DiscoverRecommended,
+  Articles: DiscoverArticles,
+  Videos: DiscoverVideos,
+  Newsroom: DiscoverNewsroom,
+};
+
+const heroByTab = {
+  Recommended: DiscoverHeroData[0],
+  Articles: DiscoverHeroData[1],
+  Videos: DiscoverHeroData[2],
+  Newsroom: DiscoverHeroData[3],
+};
+
 export const Discover = ({
   onSelectProduct,
   onOpenAuthModal,
   onOpenCartModal,
   cartCount,
 }) => {
-  const [activeTab, setActiveTab] = useState("articles");
-  const [searchQuery, setSearchQuery] = useState("");
+  const [activeTab, setActiveTab] = useState("Recommended");
 
   return (
     <div className="min-h-screen bg-[#F4F4F4]">
@@ -25,15 +44,24 @@ export const Discover = ({
         cartCount={cartCount}
       />
 
-      <main className="max-w-[1200px] mx-auto px-8 pt-1 pb-8">
-        <DiscoverMenu activeTab={activeTab} setActiveTab={setActiveTab} />
+      <main className="max-w-[1226px] mx-auto px-0 pt-2 pb-10">
 
-        <DiscoverSearch searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+        <DiscoverMenu
+          activeTab={activeTab}
+          onSelectTab={setActiveTab}
+        />
 
-        {/* Only show Hero on Recommended or when not searching */}
-        {!searchQuery && activeTab === "recommended" && <DiscoverHero />}
+        <DiscoverSearch />
 
-        <DiscoverGrid activeTab={activeTab} searchQuery={searchQuery} />
+        {activeTab === "Recommended" && (
+          <div className="mb-8">
+            <DiscoverHero heroItem={heroByTab[activeTab]} />
+          </div>
+        )}
+
+        <DiscoverGrid items={tabContent[activeTab].length > 0 && 
+          tabContent[activeTab]} />
+
       </main>
 
       <Footer />

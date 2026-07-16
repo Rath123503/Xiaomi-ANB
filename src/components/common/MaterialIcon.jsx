@@ -11,11 +11,11 @@ export const MaterialIcon = ({
   style = {}
 }) => {
   // Build font variation settings for Material Symbols Rounded
-  const fontVariationSettings = `'FILL' \${fill ? 1 : 0}, 'wght' \${weight}, 'GRAD' \${grade}, 'opsz' \${opticalSize}`;
+  const fontVariationSettings = `'FILL' ${fill ? 1 : 0}, 'wght' ${weight}, 'GRAD' ${grade}, 'opsz' ${opticalSize}`;
   
   return (
     <span 
-      className={`material-symbols-rounded select-none inline-flex items-center justify-center shrink-0 \${className}`}
+      className={`material-symbols-rounded select-none inline-flex items-center justify-center shrink-0 ${className}`}
       style={{
         fontSize: size,
         width: size,
