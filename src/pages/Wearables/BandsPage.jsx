@@ -120,7 +120,7 @@ export const BandsPage = ({
         id: 6,
         name: "Xiaomi Smart Band7",
         subtitle: "",
-        image: "https://i01.appmifile.com/v1/MI_18455B3E4DA706226CF7535A58E875F0267/pms_1666841198.19169745.jpg?thumb=1&w=220&f=webp&q=85",
+        image: "https://i02.appmifile.com/828_operatorx_operatorx_opx/26/09/2024/e4477095ab705aced7ac8236670d4fde.png?thumb=1&w=220&f=webp&q=85",
         
         isNew: false,
       },
@@ -134,6 +134,7 @@ export const BandsPage = ({
       },
       {
         id: 8,
+        
         name: "Xiaomi Smart Band7",
         subtitle: "",
         image: "https://i01.appmifile.com/v1/MI_18455B3E4DA706226CF7535A58E875F0267/pms_1666844854.23092905.png?thumb=1&w=220&f=webp&q=85",
