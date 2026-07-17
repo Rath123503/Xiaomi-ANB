@@ -141,7 +141,7 @@ export const Mobile = ({
     },
   ];
 
-  // Data ProductFourGrid (POCO Series-4 Card)
+  // Data ProductFourGrid (POCO Series-4 Card) //////
   const pocoFourProducts = [
     {
       id: "poco-r1",
@@ -313,7 +313,7 @@ export const Mobile = ({
         </div>
       </section>
 
-      {/* --- SECTION 3: POCO PHONES --- */}
+      {/* --- SECTION 3: POCO PHONES /////--- */}
       <section>
         {activeSubCat === "all" && (
           <>
