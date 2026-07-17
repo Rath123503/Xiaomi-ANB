@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navbar } from '../../components/layout/Navbar/Navbar';
 import { Footer } from '../../components/layout/Footer/Footer';
-// import { MaterialIcon } from '../../components/common/MaterialIcon';
+import { SupportContent } from './SupportContent';
 
 export const Support = ({
   onSelectProduct,
@@ -18,7 +18,8 @@ export const Support = ({
         onOpenCartModal={onOpenCartModal}
         cartCount={cartCount}
       />
-      {/*  */}
+      
+      <SupportContent />
     
       {/* Footer rendered inside page */}
       <Footer />

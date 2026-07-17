@@ -20,7 +20,9 @@
         "./*"
       ]
     },
+    "types": ["node", "vite/client"],
     "allowImportingTsExtensions": true,
+    "esModuleInterop": true,
     "noEmit": true
   }
 }
