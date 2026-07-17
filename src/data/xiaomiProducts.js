@@ -1,8 +1,0 @@
-export {
-  XIAOMI_CATEGORIES,
-  ALL_PRODUCTS,
-  TRENDING_SEARCHES,
-  RECENT_SEARCHES,
-  POPULAR_PRODUCTS
-  
-} from './HomeProducts';
