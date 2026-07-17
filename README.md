@@ -234,5 +234,5 @@ npm run build
 ---
 
 ## Preview or Deploy 
-- Using Vercel 
+- Using Vercel to deploy
 
