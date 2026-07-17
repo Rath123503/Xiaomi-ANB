@@ -4,4 +4,5 @@ export {
   TRENDING_SEARCHES,
   RECENT_SEARCHES,
   POPULAR_PRODUCTS
+  
 } from './HomeProducts';
